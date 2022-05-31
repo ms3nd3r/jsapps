@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/earlyaccess/hannari.css" rel="stylesheet">
+    <title>麻雀スコア清算ツール</title>
+</head>
+<body>
+    <h1>麻雀スコア清算ツール</h1>
+    <div id="uma-oka">
+        <p id="uma">
+            <h3>ウマ</h3>
+            1位←4位 <input type="text" id="umaValue1" value="20"><br>
+            2位←3位 <input type="text" id="umaValue2" value="10">
+        </p>
+        <p id="oka">
+            <h3>オカ</h3>
+            <input type="text" id="okaBefore" value="25000">点の
+            <input type="text" id="okaAfter" value="30000">点返し
+        </p>
+    </div>
+    <div id="main">
+        <h3>最終的な点数を入力</h3>
+        <p id="1st">
+            1着 <input type="text" id="Pt1">点
+        </p>
+        <p id="2nd">
+            2着 <input type="text" id="Pt2">点
+        </p>
+        <p id="3rd">
+            3着 <input type="text" id="Pt3">点
+        </p>
+        <p id="4th">
+            4着 <input type="text" id="Pt4">点
+        </p>
+        <p><input type="button" value="計算する"  id="calcStart"></p>
+    </div>
+    <div id="result">
+        <p id="1stResult"></p>
+        <p id="2ndResult"></p>
+        <p id="3rdResult"></p>
+        <p id="4thResult"></p>
+    </div>
+    <script src="calc.js"></script>
+</body>
+</html>
