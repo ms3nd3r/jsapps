@@ -1,10 +1,8 @@
 'use strict';
 
-var minutes_txt=prompt("ゲーム時間(分数)を入力してください");//分数を入力して数値を保存
-var minutes = parseInt(minutes_txt);
-console.log(minutes);
+let value=prompt("名前を入力してください");
 
-function countdown(due){//分数,秒数,ミリ秒を算出する
+function countdown(due){
     //定数nowに現在時刻を代入
     const now = new Date();
     //定数restに未来時刻-現在時刻の計算結果を代入
@@ -30,28 +28,28 @@ goal.setMilliseconds(99);
 
 console.log(countdown(goal));
 
-const counter = countdown(goal);//要素数は3に変更
+const counter = countdown(goal);
 for(let i=0;i<4;i++){
     if(counter[i] < 10){
         counter[i] = '0'+counter[i];
     }    
 }
 
-const time = `${counter[0]}:${counter[1]}:${counter[2]}:${counter[3]}`;//3を削除
-//console.log(time);
+const time = `${counter[0]}:${counter[1]}:${counter[2]}:${counter[3]}`;
+console.log(time);
 
 document.getElementById('timer').textContent = time;
 
 function recalc(){
-//    console.log(countdown(goal));
+    console.log(countdown(goal));
     const counter = countdown(goal);
     for(let i=0;i<4;i++){
         if(counter[i] < 10){
             counter[i] = '0'+counter[i];
         }    
     }
-    const time = `${counter[0]}:${counter[1]}:${counter[2]}:${counter[3]}`;//3を削除
-//    console.log(time);
+    const time = `${counter[0]}:${counter[1]}:${counter[2]}:${counter[3]}`;
+    console.log(time);
     document.getElementById('timer').textContent = time;
 
     refresh();
