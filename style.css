@@ -1,0 +1,17 @@
+h1{
+    font-family: Arial, Helvetica, sans-serif;
+    margin: auto auto;
+}
+#main{
+    font-size: larger;
+    list-style: none;
+    display:flex;
+}
+#main li ul{
+    text-decoration: none;
+}
+#main li ul a{
+    color: black;
+}
+
+

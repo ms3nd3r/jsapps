@@ -1,7 +1,5 @@
 'use strict';
 
-let value=prompt("名前を入力してください");
-
 function countdown(due){
     //定数nowに現在時刻を代入
     const now = new Date();
