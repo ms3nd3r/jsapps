@@ -1,6 +1,13 @@
+body{
+    background-color: black;
+}
 h1{
+    color: aquamarine;
+    font-size: 300%;
     font-family: Arial, Helvetica, sans-serif;
     margin: auto auto;
+    text-align: center;
+    margin: 30px;
 }
 #main{
     font-size: larger;
@@ -13,5 +20,55 @@ h1{
 #main li ul a{
     color: black;
 }
+.item {/*親div*/
+    position: relative;/*相対配置*/
+    background-color: white;  /* カラーフィルタ効果の色を指定 */
+    display: inline-block;    /* (任意：インラインブロック化したい場合) */
+    }
+  
+.item p {
+    position: absolute;/*絶対配置*/
+    color: rgb(51, 18, 8);
+    font-size: 200%;
+    font-weight: 60%;
+    text-shadow: 1px 1px 0 #FFF, -1px -1px 0 #FFF,
+    -1px 1px 0 #FFF, 1px -1px 0 #FFF,
+    0px 1px 0 #FFF,  0-1px 0 #FFF,
+    -1px 0 0 #FFF, 1px 0 0 #FFF;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%,-50%);
+    -webkit-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+    margin:0;
+    padding:0;
+    text-decoration: none;
+    }
+  
+.item img {
+    width: 100%;
+    }
 
+    .colorfilter-image {
+        opacity: 0.6;    /* カラーフィルタ効果の度合いを指定 */
+        display: block;
+    }
+
+    .js-animation {
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(40px);
+        transition: all 1s;
+      }
+      .js-animation.is-show {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0px);
+      }
+
+footer{
+    text-decoration: none;
+    text-align: center;
+    color: wheat;
+}
 
