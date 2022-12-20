@@ -13,7 +13,7 @@ document.getElementById("calcStart").onclick = function() {
     var Pt2 = parseInt(sc2.value);    
     var Pt3 = parseInt(sc3.value); 
     var Pt4 = parseInt(sc4.value);
-    var scoreSum = Pt1+Pt2+Pt3+Pt4;
+    var scoreSum = Pt1+Pt2+Pt3+Pt4; //　合計点数が正しいかどうかのエラー処理に活用
     const u1 = document.getElementById('umaValue1');
     var umaValue1 = parseInt(u1.value);
     const u2 = document.getElementById('umaValue2');
@@ -22,7 +22,7 @@ document.getElementById("calcStart").onclick = function() {
     var okaBefore = parseInt(oB.value);
     const oA = document.getElementById('okaAfter');
     var okaAfter = parseInt(oA.value);
-    var okaPt = ((okaAfter-okaBefore)*4)/1000;
+    var okaPt = ((okaAfter-okaBefore)*4)/10;
     calc(Pt1,Pt2,Pt3,Pt4,umaValue1,umaValue2,okaAfter,okaPt);
     outputPts(ptData);
 };
@@ -48,13 +48,13 @@ if(scoreSum !== okaBefore*4){
 //================
 function calc(Pt1,Pt2,Pt3,Pt4,umaValue1,umaValue2,okaAfter,okaPt){
     console.log(Pt1,Pt2,Pt3,Pt4,umaValue1,umaValue2,okaAfter);
-    Pt1 = (Pt1-okaAfter)/1000+umaValue1+okaPt;
+    Pt1 = (Pt1-okaAfter)/10+umaValue1+okaPt;
     Pt1 = Pt1.toFixed(1);    //1着計算
-    Pt2 = (Pt2-okaAfter)/1000+umaValue2;
+    Pt2 = (Pt2-okaAfter)/10+umaValue2;
     Pt2 = Pt2.toFixed(1);   //2着計算
-    Pt3 = (Pt3-okaAfter)/1000-umaValue2;
+    Pt3 = (Pt3-okaAfter)/10-umaValue2;
     Pt3 = Pt3.toFixed(1);   //3着計算
-    Pt4 = (Pt4-okaAfter)/1000-umaValue1;
+    Pt4 = (Pt4-okaAfter)/10-umaValue1;
     Pt4 = Pt4.toFixed(1);   //4着は残りの値から算出する(要改造)
     ptData=[Pt1,Pt2,Pt3,Pt4];
     console.log(ptData);

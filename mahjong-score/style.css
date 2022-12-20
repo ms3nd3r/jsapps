@@ -68,3 +68,9 @@ input{
         border:2px solid #525252;
         border-radius: 60px;
 }
+
+footer{
+    background: linear-gradient(to right, #f4fffc 0%, #92fcac 100%);
+    padding: 10px;
+    text-align: center;
+}
