@@ -18,6 +18,7 @@ h1{
     padding-left: 30px;
     font-size: 20px;
 }
+
 #uma-oka #umaValue1,#umaValue2{
     width:30px;
     font-size: 20px;
@@ -74,4 +75,15 @@ footer{
     background: linear-gradient(to right, #f4fffc 0%, #92fcac 100%);
     padding: 10px;
     text-align: center;
+}
+
+.zero{
+    background-color: #a5ebb0;
+    font-size: 20px;
+    width: 25px;
+}
+
+#main .zero{
+    font-size: 25px;
+    width :30px;
 }

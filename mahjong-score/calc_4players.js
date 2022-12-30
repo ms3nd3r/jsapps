@@ -22,10 +22,12 @@ document.getElementById("calcStart").onclick = function() {
     var okaBefore = parseInt(oB.value);
     const oA = document.getElementById('okaAfter');
     var okaAfter = parseInt(oA.value);
-    errorCheck(Pt1,Pt2,Pt3,Pt4,scoreSum,okaBefore);
-    var okaPt = ((okaAfter-okaBefore)*4)/10;
-    calc(Pt1,Pt2,Pt3,Pt4,umaValue1,umaValue2,okaAfter,okaPt);
-    outputPts(ptData);
+    var errFlg = errorCheck(Pt1,Pt2,Pt3,Pt4,scoreSum,okaBefore);
+    if(errFlg){
+        var okaPt = ((okaAfter-okaBefore)*4)/10;
+        calc(Pt1,Pt2,Pt3,Pt4,umaValue1,umaValue2,okaAfter,okaPt);
+        outputPts(ptData);
+    }
 };
 
 
@@ -33,22 +35,26 @@ document.getElementById("calcStart").onclick = function() {
 //整合性チェック
 //================
 function errorCheck(Pt1,Pt2,Pt3,Pt4,scoreSum,okaBefore){
+    var flg = true;
     if(isNaN(Pt1) || isNaN(Pt2) || isNaN(Pt3)|| isNaN(Pt4)){
         alert("入力欄エラー！点数を入力してください");
-        return;
+        flg = false;
+        return flg;
     }
                 //NaNは許容しない
     if(scoreSum !== okaBefore*4){
         alert("合計点数エラー！合計値が"+okaBefore*400+"点になっていません");
-        return;
+        flg = false;
+        return(flg);
     }       
                 //点数の合計値はokaBeforeの3倍になっているか
     if( Pt1 < Pt2 || Pt1 < Pt3 || Pt1 < Pt4 || Pt2 < Pt3 || Pt2 < Pt4 || Pt3 < Pt4 ){
         alert("着順エラー！着順と点数が逆転しています")
-        return;
+        flg = false;
+        return(flg);
     }
                 //着順と点数が逆転していないか
-    
+    return flg;
                 //ダメなときはエラー処理を発生させる
 }
 
@@ -67,7 +73,6 @@ function calc(Pt1,Pt2,Pt3,Pt4,umaValue1,umaValue2,okaAfter,okaPt){
     Pt4 = Pt4.toFixed(1);   //4着は残りの値から算出する(要改造)
     ptData=[Pt1,Pt2,Pt3,Pt4];
     console.log(ptData);
-    console.log('動いてますよ～');
     return ptData;
 }
 
