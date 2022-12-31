@@ -54,7 +54,7 @@ function recalc(){
 }
 
 function refresh(){
-    setTimeout(recalc,100);
+    setTimeout(recalc,63);
 }
 
 recalc();

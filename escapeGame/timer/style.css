@@ -1,10 +1,19 @@
 body{
     background-color: black;
 }
+#msg{
+    text-align: center;
+}
+#gameOver{
+    color: red;
+    font-size: 500%;
+    /* 要フォント変更 */
+}
+
 .container{
     box-sizing: border-box;
     width: 100%;
-    height: 95vh;
+    height: 85vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -15,6 +24,7 @@ body{
 }
 #timer{
     color: red;
-    font-family: "DSEG7 Modern";
+
+    font-family: 'Sevillana', cursive;
     font-size: 200px;
 }
