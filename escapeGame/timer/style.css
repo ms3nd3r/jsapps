@@ -25,6 +25,6 @@ body{
 #timer{
     color: red;
 
-    font-family: 'Sevillana', cursive;
+    font-family: 'Sevillana',monospace;
     font-size: 200px;
 }

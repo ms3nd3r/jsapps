@@ -1,10 +1,13 @@
 'use strict';
 
 var gameMinutesTxt=prompt("ゲーム時間(minutes)を入力してください");//分数を入力して数値を保存
-//入力値エラー処理を後ほど作成
+if(isNaN(gameMinutesTxt) || gameMinutesTxt === '' || gameMinutesTxt == null){
+    alert('数値を入力してください!このページは閉じるボタンを押すとリロードされます');
+    location.reload();
+}//入力値エラー処理
 
 var gameMinutes = parseInt(gameMinutesTxt);
-var Cnt = 0; 
+
 
 // ゲーム時間のm秒化
 var gameMilliSec = gameMinutes * 60 * 1000 
