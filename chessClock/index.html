@@ -9,10 +9,12 @@
     <form>
       <label for="timeInput">Enter Time (in minutes):</label>
       <input type="number" id="timeInput" min="1" value="5">
-      <button type="button" onclick="startTimer()">Start</button>
+      <button type="button" onclick="startTimer()" id="startButton">Start</button>
+      <!-- 押すと開始 -->
     </form>
     <h2 id="timerDisplay">Time Left: 5:00</h2>
     <button type="button" onclick="resetTimer()" id="resetButton">Reset</button>
+    <!-- 押すとリセット -->
     <script src="chessTimer.js"></script>
   </body>
 </html>

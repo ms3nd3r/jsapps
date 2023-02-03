@@ -17,8 +17,7 @@
         font-size: 36px;
         margin-top: 20px;
       }
-
-      #resetButton {
+      #startButton,#resetButton {
         margin-top: 20px;
         padding: 10px 20px;
         background-color: lightgray;
