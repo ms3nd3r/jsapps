@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Chess Timer</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <h1>Chess Timer</h1>
+    <form>
+      <label for="timeInput">Enter Time (in minutes):</label>
+      <input type="number" id="timeInput" min="1" value="5">
+      <button type="button" onclick="startTimer()">Start</button>
+    </form>
+    <h2 id="timerDisplay">Time Left: 5:00</h2>
+    <button type="button" onclick="resetTimer()" id="resetButton">Reset</button>
+    <script src="chessTimer.js"></script>
+  </body>
+</html>

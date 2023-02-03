@@ -1,0 +1,34 @@
+
+      /* CSS rules go here */
+      form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 20px;
+      }
+
+      label,
+      input[type="number"],
+      button {
+        margin-bottom: 10px;
+      }
+
+      #timerDisplay {
+        font-size: 36px;
+        margin-top: 20px;
+      }
+
+      #resetButton {
+        margin-top: 20px;
+        padding: 10px 20px;
+        background-color: lightgray;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      #resetButton:disabled {
+        background-color: gray;
+        cursor: default;
+      }
+
