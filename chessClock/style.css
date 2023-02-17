@@ -17,13 +17,18 @@
         font-size: 36px;
         margin-top: 20px;
       }
-      #startButton,#resetButton {
+      #startButton,#moveButton {
         margin-top: 20px;
         padding: 10px 20px;
         background-color: lightgray;
         border: none;
         border-radius: 5px;
         cursor: pointer;
+
+      }
+
+      #moveButton{
+        width:150%;
       }
 
       #resetButton:disabled {
@@ -31,3 +36,22 @@
         cursor: default;
       }
 
+      #firstAttack{
+        float: left;
+        margin: 5%;
+      }
+
+      #secondAttack{
+        float: left;
+        margin: 5%;
+      }
+
+      p{
+        font-size: 300%;
+      }
+
+      button
+
+      footer{
+        clear: both;
+      }

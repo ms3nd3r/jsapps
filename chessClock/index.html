@@ -9,19 +9,22 @@
     <form>
       <label for="timeInput">Enter Time (in minutes):</label>
       <input type="number" id="timeInput" min="1" value="5">
+      <!-- この残り時間でできるようにする -->
       <button type="button" onclick="startTimer()" id="startButton">Start</button>
       <!-- 押すと開始 -->
     </form>
     <div id="firstAttack">
-      <h2 id="timerDisplay1">Time Left: 5:00</h2>
-      <!-- <button type="button" onclick="onMoveFirst()" id="resetButton">着手</button> -->
-      <button type="button" onclick="stopTimer1()" id="resetButton">着手</button>
+      <h2>Time Left:</h2>
+      <p id="timerDisplay1">5:00</p>
+      <!-- 残り時間を記載 -->
+      <button type="button" onclick="onMoveFirst()" id="moveButton">着手</button>
     </div>
     <div id="secondAttack">
-      <h2 id="timerDisplay2">Time Left: 5:00</h2>
-      <!-- <button type="button" onclick="onMoveSecond()" id="resetButton">着手</button> -->
-      <button type="button" onclick="stopTimer2()" id="resetButton">着手</button>
+      <h2>Time Left:</h2>
+      <p id="timerDisplay2">5:00</p>
+      <button type="button" onclick="onMoveSecond()" id="moveButton">着手</button>
     </div>
+    <footer>制作:ms3nd3r</footer>
     <!-- 押すとリセット -->
     <script src="chessTimer.js"></script>
   </body>
