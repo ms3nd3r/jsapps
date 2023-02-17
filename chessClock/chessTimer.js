@@ -22,3 +22,4 @@ function resetTimer() {
   timerDisplay.innerHTML = "Time Left: 5:00";
   resetButton.disabled = true;
 }
+
