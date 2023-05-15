@@ -24,7 +24,7 @@ function timeCalc(endTimeMilliSecond, startTimeMilliSecond){
 
     displayRemainingTime(remainingTimeMilliSecond);
     // 残り時間を出す処理
-    
+
     refresh(endTimeMilliSecond);
 };
 
@@ -40,7 +40,7 @@ function reCalc(endTimeMilliSecond){
     if(remainingTimeMilliSecond <= 100){
         remainingTimeMilliSecond = 0;
             // もし残り時間が0以下になったら終了演出
-        document.getElementById('gameOver').textContent = "Game Over";
+        displayRemainingTime(remainingTimeMilliSecond);
     }
     refresh(endTimeMilliSecond);
 };
@@ -48,16 +48,18 @@ function reCalc(endTimeMilliSecond){
 function refresh(endTimeMilliSecond) {
     setTimeout(function() {
         reCalc(endTimeMilliSecond);
-    }, 100);
+    }, 50);
 }
 
 function displayRemainingTime(remainingTimeMilliSecond) {
-    const milli = Math.floor(remainingTimeMilliSecond/10) % 100;
-    const sec = Math.floor(remainingTimeMilliSecond/1000) % 60;
-    const min = Math.floor(remainingTimeMilliSecond/1000/60) % 60;
-    const hours = Math.floor(remainingTimeMilliSecond/1000/60/60) % 24;
+    let milli = Math.floor(remainingTimeMilliSecond/10) % 100;
+    if(milli < 10){milli = "0"+milli;}
+    let sec = Math.floor(remainingTimeMilliSecond/1000) % 60;
+    if(sec < 10){sec = "0"+sec;}
+    let min = Math.floor(remainingTimeMilliSecond/1000/60) % 60;
+    if(min < 10){min = "0"+min;}
 
-    document.getElementById('timer').textContent = hours+":"+min+":"+sec+":"+milli;
+    document.getElementById('timer').textContent = min+":"+sec+":"+milli;
 }
 
 timeCalc(endTimeMilliSecond, startTimeMilliSecond);
