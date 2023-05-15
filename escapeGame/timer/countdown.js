@@ -4,82 +4,60 @@ var gameMinutesTxt=prompt("ゲーム時間(minutes)を入力してください")
 if(isNaN(gameMinutesTxt) || gameMinutesTxt === '' || gameMinutesTxt == null){
     alert('数値を入力してください!このページは閉じるボタンを押すとリロードされます');
     location.reload();
-}//入力値エラー処理
+}
 
 var gameMinutes = parseInt(gameMinutesTxt);
 
 
-// ゲーム時間のm秒化
-var gameMilliSec = gameMinutes * 60 * 1000 
+// 現在時刻をミリ秒単位で取得
+var startTimeMilliSecond = new Date().getTime();
+
+// 現在時間にゲーム時間を引いた時間を取得
+var endTimeMilliSecond = startTimeMilliSecond + gameMinutes * 60 * 1000;
+//  A + 10分
+console.log(endTimeMilliSecond);
 
 // ゲーム時間の算出
-function timeCalc(gameMilliSec){//分数,秒数,ミリ秒を算出する
-    const milli = Math.floor(gameMilliSec/10) % 100;
-    const sec = Math.floor(gameMilliSec/1000) % 60;
-    const min = Math.floor(gameMilliSec/1000/60) % 60;
-    const hours = Math.floor(gameMilliSec/1000/60/60) % 24;
-    //秒数を計算結果として出力
+function timeCalc(endTimeMilliSecond, startTimeMilliSecond){
+    var remainingTimeMilliSecond = endTimeMilliSecond - startTimeMilliSecond; // 10分 = 終了時刻 - 開始時刻   
+    console.log(remainingTimeMilliSecond);
 
-    var time = [hours,min,sec,milli];
+    displayRemainingTime(remainingTimeMilliSecond);
+    // 残り時間を出す処理
+    
+    refresh(endTimeMilliSecond);
+};
 
-    return time;
-}
+function reCalc(endTimeMilliSecond){
+    var nowTimeMilliSecond = new Date().getTime();
+    console.log(endTimeMilliSecond);
+    var remainingTimeMilliSecond = endTimeMilliSecond - nowTimeMilliSecond;
+    console.log(remainingTimeMilliSecond);
 
-var timeArray  = timeCalc(gameMilliSec);
+    displayRemainingTime(remainingTimeMilliSecond);
+    // 残り時間を出力する関数
 
-// ゲーム時間の出力
-function zeroCheck(timeArray){
-    // timeArray.map(Number);
-    for(let i=0;i<4;i++){
-        if(timeArray[i] < 10){
-            timeArray[i] = '0'+timeArray[i];
-        }    
-    }
-    return(timeArray);
-}
-zeroCheck(timeArray);
-
-const nowGameTime = timeArray[0]+":"+timeArray[1]+":"+timeArray[2]+":"+timeArray[3];
-document.getElementById('timer').textContent = nowGameTime;
-
-// ゲーム時間の減算
-function countdown(gameMilliSec){
-    gameMilliSec-=63;//1処理ごとに63m秒減算(見た目的にいい速度に見える)
-    return gameMilliSec;
-}
-
-// 残りが0になったら終了演出
-function gameOverCheck(gameMilliSec,endflg){
-    if(gameMilliSec < 150){
-        gameMilliSec = 0;
-        timeArray = timeCalc(gameMilliSec);
-        timeArray = zeroCheck(timeArray);
-        var nowGameTimeZero = timeArray[0]+":"+timeArray[1]+":"+timeArray[2]+":"+timeArray[3];
-        document.getElementById('timer').textContent = nowGameTimeZero;
+    if(remainingTimeMilliSecond <= 100){
+        remainingTimeMilliSecond = 0;
+            // もし残り時間が0以下になったら終了演出
         document.getElementById('gameOver').textContent = "Game Over";
-        endflg=1;
     }
-    return(endflg);
+    refresh(endTimeMilliSecond);
+};
+
+function refresh(endTimeMilliSecond) {
+    setTimeout(function() {
+        reCalc(endTimeMilliSecond);
+    }, 100);
 }
 
-//以下再計算して繰り返す
-function recalc(){
-    var endflg = 0;
-    console.log(gameMilliSec);
-    endflg = gameOverCheck(gameMilliSec,endflg);
-    if(endflg == 0){
-        gameMilliSec = countdown(gameMilliSec);
-        timeArray = timeCalc(gameMilliSec);
-        timeArray = zeroCheck(timeArray);
-        var nowGameTime = timeArray[0]+":"+timeArray[1]+":"+timeArray[2]+":"+timeArray[3];
-        document.getElementById('timer').textContent = nowGameTime;
-        refresh();
-    }
+function displayRemainingTime(remainingTimeMilliSecond) {
+    const milli = Math.floor(remainingTimeMilliSecond/10) % 100;
+    const sec = Math.floor(remainingTimeMilliSecond/1000) % 60;
+    const min = Math.floor(remainingTimeMilliSecond/1000/60) % 60;
+    const hours = Math.floor(remainingTimeMilliSecond/1000/60/60) % 24;
+
+    document.getElementById('timer').textContent = hours+":"+min+":"+sec+":"+milli;
 }
 
-function refresh(){
-    setTimeout(recalc,63);
-}
-
-recalc();
-
+timeCalc(endTimeMilliSecond, startTimeMilliSecond);
