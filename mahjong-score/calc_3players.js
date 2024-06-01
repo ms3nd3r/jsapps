@@ -12,16 +12,24 @@ document.getElementById("calcStart").onclick = function() {
     var Pt2 = parseInt(sc2.value);    
     var Pt3 = parseInt(sc3.value); 
     var scoreSum = Pt1+Pt2+Pt3; //　合計点数が正しいかどうかのエラー処理に活用
+    // ウマ取得
     const u1 = document.getElementById('umaValue1');
     var umaValue1 = parseInt(u1.value);
+    const u2 = document.getElementById('umaValue2');
+    var umaValue2 = parseInt(u2.value);    
+    // const u3 = document.getElementById('umaValue3');
+    // var umaValue3 = parseInt(u3.value); 
+    // オカ取得
     const oB = document.getElementById('okaBefore');
     var okaBefore = parseInt(oB.value);
     const oA = document.getElementById('okaAfter');
     var okaAfter = parseInt(oA.value);
+
     var errFlg = errorCheck(Pt1,Pt2,Pt3,scoreSum,okaBefore);
+    // エラーが起きなければ計算実行
     if(errFlg){
         var okaPt = ((okaAfter-okaBefore)*3)/10;
-        calc(Pt1,Pt2,Pt3,umaValue1,okaAfter,okaPt);
+        calc(Pt1,Pt2,Pt3,umaValue1,umaValue2,okaAfter,okaPt);
         outputPts(ptData);
     }
 };
@@ -39,7 +47,7 @@ function errorCheck(Pt1,Pt2,Pt3,scoreSum,okaBefore){
     }
                 //NaNは許容しない
     if(scoreSum !== okaBefore*3){
-        alert("合計点数エラー！合計値が"+okaBefore*300+"点になっていません現在は"+scoreSum+"点です");
+        alert("合計点数エラー！合計値が"+okaBefore*300+"点になっていません現在は"+scoreSum*100+"点です");
         flg = false;
         return flg;
     }            
@@ -59,12 +67,22 @@ function errorCheck(Pt1,Pt2,Pt3,scoreSum,okaBefore){
 //================
 //点数計算
 //================
-function calc(Pt1,Pt2,Pt3,umaValue1,okaAfter,okaPt){
+function calc(Pt1,Pt2,Pt3,umaValue1,umaValue2,okaAfter,okaPt){
     console.log(Pt1,Pt2,Pt3,umaValue1,okaAfter);
-    Pt1 = (Pt1-okaAfter)/10+umaValue1+okaPt;
+    let oka2 = 0;
+    if(Pt2<okaAfter){
+        oka2 = umaValue2;
+    }
+    Pt1 = (Pt1-okaAfter)/10+umaValue1+okaPt+oka2;
     Pt1 = Pt1.toFixed(1);    //1着計算
-    Pt2 = (Pt2-okaAfter)/10;
+    Pt2 = (Pt2-okaAfter)/10-oka2;
     Pt2 = Pt2.toFixed(1);   //2着計算
+    // if(Pt2<okaAfter){
+    //     Pt2 -= umaValue2;
+    // }
+    // if(Pt2<0){
+    //     Pt2 -=umaValue3;
+    // }
     Pt3 = (Pt3-okaAfter)/10-umaValue1;
     Pt3 = Pt3.toFixed(1);   //3着は残りの値から算出する(要改造)
     ptData=[Pt1,Pt2,Pt3];
