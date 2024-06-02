@@ -70,10 +70,11 @@ function errorCheck(Pt1,Pt2,Pt3,scoreSum,okaBefore){
 function calc(Pt1,Pt2,Pt3,umaValue1,umaValue2,okaAfter,okaPt){
     console.log(Pt1,Pt2,Pt3,umaValue1,okaAfter);
     let oka2 = 0;
+    let oka3th =umaValue2; 
     if(Pt2<okaAfter){
         oka2 = umaValue2;
     }
-    Pt1 = (Pt1-okaAfter)/10+umaValue1+okaPt+oka2;
+    Pt1 = (Pt1-okaAfter)/10+umaValue1+okaPt+oka2+oka3th;
     Pt1 = Pt1.toFixed(1);    //1着計算
     Pt2 = (Pt2-okaAfter)/10-oka2;
     Pt2 = Pt2.toFixed(1);   //2着計算
@@ -83,7 +84,7 @@ function calc(Pt1,Pt2,Pt3,umaValue1,umaValue2,okaAfter,okaPt){
     // if(Pt2<0){
     //     Pt2 -=umaValue3;
     // }
-    Pt3 = (Pt3-okaAfter)/10-umaValue1;
+    Pt3 = (Pt3-okaAfter)/10-umaValue1-oka3th;
     Pt3 = Pt3.toFixed(1);   //3着は残りの値から算出する(要改造)
     ptData=[Pt1,Pt2,Pt3];
     console.log(ptData);
